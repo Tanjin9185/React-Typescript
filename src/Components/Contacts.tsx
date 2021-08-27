@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import Contact from './Contact';
 
+interface IContact{
+    name: string,
+    email?: string,
+}
+
 const Contacts = () => {
 
-    const [contact, setContact] = useState('');
+    const [contact, setContact] = useState<IContact>('');
     const [contactList, setContactList] = useState<string[]>([]);
 
     console.log('contact', contact); 
@@ -19,7 +24,7 @@ const Contacts = () => {
             <h1>Contact Lists</h1>
             <div className='from'>
                 <input onChange={(e) => setContact(e.target.value)} name='name' placeholder='name' type="text" />
-                <button onClick={onClick}>Add </button>
+                <button onClick={onClick}>Add</button>
             </div>
             {
                 contactList.map((contact) => <Contact key={contact} name={contact} email="tanjin.ahamed123@gmail.com"></Contact>)
